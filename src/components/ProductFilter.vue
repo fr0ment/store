@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-4">
+    <div class="s1 mb-4">
       <select class="form-select" @change="filter" v-model="selectedCategory">
         <option value="">Все категории</option>
         <option v-for="category in categories" :key="category" :value="category">

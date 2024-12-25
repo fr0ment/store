@@ -6,6 +6,7 @@
           v-for="product in paginatedProducts"
           :key="product.id"
           :product="product"
+          :exchange-rate="exchangeRate"
           @add-to-cart="addToCart"/>
     </div>
     <ProductPagination
@@ -19,6 +20,7 @@
 import ProductCard from "@/components/ProductCard.vue";
 import ProductPagination from "@/components/ProductPagination.vue";
 import ProductFilter from "@/components/ProductFilter.vue";
+import axios from "axios";
 
 export default {
   components: { ProductCard,  ProductPagination, ProductFilter },
@@ -28,6 +30,7 @@ export default {
       filteredProducts: [],
       categories: [],
       currentPage: 1,
+      exchangeRate: 75, // значение рубля по умолчанию, 75 рублей за долар
     };
   },
 
@@ -46,6 +49,14 @@ export default {
         const res = await fetch("https://fakestoreapi.com/products/categories");
         this.categories = await res.json();
       },
+      async fetchExchangeRate() {
+      try {
+        const res = await axios.get("https://www.cbr-xml-daily.ru/daily_json.js");// API курсов валют 
+        this.exchangeRate = res.data.Valute.USD.Value;
+      } catch (error) {
+        console.error("Ошибка получения курса валют:", error);
+      }
+    },
       filterCategory(category) {
         this.filteredProducts = category
           ? this.products.filter((p) => p.category === category)
@@ -62,6 +73,7 @@ export default {
     created() {
       this.fetchProducts();
       this.fetchCategories();
+      this.fetchExchangeRate();
     },
   computed: {
       paginatedProducts() {

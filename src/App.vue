@@ -4,9 +4,10 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
           <div class="tovar">
-          <a class="navbar-brand" href="#">shop</a></div>
+          <!-- <a class="navbar-brand" href="#">shop</a> -->
+        </div>
           <div class="navbar-nav">
-            <router-link to="/products" class="nav-link">Товары</router-link>
+            <router-link to="/products" class="navbar-brand">shop</router-link>
             <router-link to="/cart" class="nav-link2"><svg class ="basket" version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="980.000000pt" height="880.000000pt" viewBox="0 0 980.000000 880.000000"
  preserveAspectRatio="xMidYMid meet">
