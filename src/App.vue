@@ -47,6 +47,7 @@ fill="#000000" stroke="none">
   </div>
 </template>
 
+
 <style src="./assets/styles/bootstrap-grid.min.css"></style>
 <style src="./assets/styles/bootstrap-reboot.min.css"></style>
 <style src="./assets/styles/custom.css"></style>
